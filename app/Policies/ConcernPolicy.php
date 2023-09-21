@@ -45,7 +45,7 @@ class ConcernPolicy
      */
     public function delete(User $user, Concern $concern): bool
     {
-        //
+        return $this->update($user, $concern);
     }
 
     /**

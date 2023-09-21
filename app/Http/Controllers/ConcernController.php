@@ -79,8 +79,10 @@ class ConcernController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Concern $concern)
+    public function destroy(Concern $concern): RedirectResponse
     {
-        //
+        $this->authorize('delete', $concern);
+        $concern->delete();
+        return redirect(route('concerns.index'));
     }
 }
