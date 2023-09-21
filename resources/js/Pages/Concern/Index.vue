@@ -3,6 +3,9 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import InputError from '@/Components/InputError.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import { useForm, Head } from '@inertiajs/vue3';
+import Concern from '@/Components/Concern.vue';
+
+defineProps(['concerns']);
  
 const form = useForm({
     message: '',
@@ -23,6 +26,13 @@ const form = useForm({
                 <InputError :message="form.errors.message" class="mt-2" />
                 <PrimaryButton class="mt-4">Concern</PrimaryButton>
             </form>
+            <div class="mt-6 bg-white shadow-sm rounded-lg divide-y">
+                <Concern
+                    v-for="concern in concerns"
+                    :key="concern.id"
+                    :concern="concern"
+                />
+            </div>
         </div>
     </AuthenticatedLayout>
 </template>
