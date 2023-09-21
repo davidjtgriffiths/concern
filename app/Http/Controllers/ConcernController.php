@@ -63,9 +63,17 @@ class ConcernController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Concern $concern)
+    public function update(Request $request, Concern $concern): RedirectResponse
     {
-        //
+        $this->authorize('update', $concern);
+
+        $validated = $request->validate([
+            'message' => 'required|string|max:255',
+        ]);
+
+        $concern->update($validated);
+
+        return redirect(route('concerns.index'));
     }
 
     /**
