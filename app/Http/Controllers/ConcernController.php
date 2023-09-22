@@ -36,7 +36,9 @@ class ConcernController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $validated = $request->validate([
+            'subject' => 'required|string|max:255',
             'message' => 'required|string|max:255',
+            'recipient_email' => 'email:rfc,dns',
         ]);
 
         $request->user()->concerns()->create($validated);

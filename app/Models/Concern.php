@@ -12,7 +12,9 @@ class Concern extends Model
     use HasFactory;
 
     protected $fillable = [
+        'subject',
         'message',
+        'recipient_email',
     ];
 
     protected $dispatchesEvents = [

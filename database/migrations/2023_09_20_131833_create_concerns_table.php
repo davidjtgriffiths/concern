@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('concerns', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->string('subject');
             $table->string('message');
+            $table->string('recipient_email');
             $table->timestamps();
         });
     }
