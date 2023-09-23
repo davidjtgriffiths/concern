@@ -13,12 +13,14 @@ class NewConcern extends Notification
 {
     use Queueable;
 
+    protected $loginLink;
+
     /**
      * Create a new notification instance.
      */
-    public function __construct(public Concern $concern)
+    public function __construct(public Concern $concern, String $loginLink)
     {
-        //
+        $this->loginLink = $loginLink;
     }
 
     /**
@@ -40,7 +42,7 @@ class NewConcern extends Notification
                     ->subject("New Concern from {$this->concern->user->name}")
                     ->greeting("New Concern from {$this->concern->user->name}")
                     ->line(Str::limit($this->concern->message, 50))
-                    ->action('Go to Website', url('/'))
+                    ->action('Go to Website', url($this->loginLink))
                     ->line('Thank you for using our application!');
     }
 

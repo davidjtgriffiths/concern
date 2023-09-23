@@ -2,12 +2,15 @@
 
 namespace App\Listeners;
 
+use Carbon\Carbon;
 use App\Models\User;
 use App\Events\ConcernCreated;
 use App\Notifications\NewConcern;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Grosv\LaravelPasswordlessLogin\LoginUrl;
+use Grosv\LaravelPasswordlessLogin\PasswordlessLogin;
 
 class SendConcernCreatedNotifications implements ShouldQueue
 {
@@ -32,8 +35,13 @@ class SendConcernCreatedNotifications implements ShouldQueue
             ['email' => $recipientEmail],
             [
                 'email' => $recipientEmail,
+                'email_verified_at' => Carbon::now(),
             ]
         );
-        $user->notify(new NewConcern($event->concern));
+
+        $generator = new LoginUrl($user);
+        $generator->setRedirectUrl('/concerns'); //TODO: Change this to Cases
+        $loginLink = $generator->generate();
+        $user->notify(new NewConcern($event->concern, $loginLink));
     }
 }
