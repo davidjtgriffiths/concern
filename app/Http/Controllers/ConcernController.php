@@ -36,10 +36,14 @@ class ConcernController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+
+        $reporter = Auth::user();
+        $tld = explode('@', $reporter->email)[1];
+
         $validated = $request->validate([
             'subject' => 'required|string|max:255',
             'message' => 'required|string|max:255',
-            'recipient_email' => 'email:rfc,dns',
+            'recipient_email' => 'email:rfc,dns|ends_with:@'.$tld,
         ]);
 
         $request->user()->concerns()->create($validated);
@@ -73,7 +77,7 @@ class ConcernController extends Controller
         $validated = $request->validate([
             'subject' => 'required|string|max:255',
             'message' => 'required|string|max:255',
-            'recipient_email' => 'required|email',
+            'recipient_email' => 'email:rfc,dns',
         ]);
 
         $concern->update($validated);
