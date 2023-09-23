@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Concern;
-use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
+use App\Models\Concern;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 
 class ConcernController extends Controller
@@ -70,7 +71,9 @@ class ConcernController extends Controller
         $this->authorize('update', $concern);
 
         $validated = $request->validate([
+            'subject' => 'required|string|max:255',
             'message' => 'required|string|max:255',
+            'recipient_email' => 'required|email',
         ]);
 
         $concern->update($validated);

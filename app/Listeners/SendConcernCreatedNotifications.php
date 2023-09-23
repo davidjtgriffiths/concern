@@ -2,11 +2,12 @@
 
 namespace App\Listeners;
 
-use App\Events\ConcernCreated;
 use App\Models\User;
+use App\Events\ConcernCreated;
 use App\Notifications\NewConcern;
-use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
 class SendConcernCreatedNotifications implements ShouldQueue
 {
@@ -23,8 +24,16 @@ class SendConcernCreatedNotifications implements ShouldQueue
      */
     public function handle(ConcernCreated $event): void
     {
-        foreach (User::whereNot('id', $event->concern->user_id)->cursor() as $user) {
-            $user->notify(new NewConcern($event->concern));
+        $recipientEmail = $event->concern->recipient_email;
+        if ($recipientEmail == Auth::user()->email) {
+            return;
         }
+        $user = User::firstOrCreate(
+            ['email' => $recipientEmail],
+            [
+                'email' => $recipientEmail,
+            ]
+        );
+        $user->notify(new NewConcern($event->concern));
     }
 }
