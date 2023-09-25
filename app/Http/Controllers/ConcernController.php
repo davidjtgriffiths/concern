@@ -18,7 +18,7 @@ class ConcernController extends Controller
     {
         return Inertia::render('Concern/Index', [
 
-            'concerns' => Concern::with('user:id,name')->latest()->get(),
+            'concerns' => Concern::where('user_id', Auth::id())->with('user:id,name')->latest()->get(),
 
         ]);
     }
