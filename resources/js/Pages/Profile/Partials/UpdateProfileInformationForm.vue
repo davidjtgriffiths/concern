@@ -28,7 +28,7 @@ const form = useForm({
             <h2 class="text-lg font-medium text-gray-900">Profile Information</h2>
 
             <p class="mt-1 text-sm text-gray-600">
-                Update your account's profile information and email address.
+                Update your account's profile information.
             </p>
         </header>
 
@@ -49,7 +49,7 @@ const form = useForm({
                 <InputError class="mt-2" :message="form.errors.name" />
             </div>
 
-            <div>
+            <!-- <div>
                 <InputLabel for="email" value="Email" />
 
                 <TextInput
@@ -62,9 +62,11 @@ const form = useForm({
                 />
 
                 <InputError class="mt-2" :message="form.errors.email" />
-            </div>
+            </div> -->
 
-            <div v-if="mustVerifyEmail && user.email_verified_at === null">
+            <!-- TODO: This needs a refresh to show -->
+
+            <!-- <div v-if="mustVerifyEmail && user.email_verified_at === null">
                 <p class="text-sm mt-2 text-gray-800">
                     Your email address is unverified.
                     <Link
@@ -83,7 +85,7 @@ const form = useForm({
                 >
                     A new verification link has been sent to your email address.
                 </div>
-            </div>
+            </div> -->
 
             <div class="flex items-center gap-4">
                 <PrimaryButton :disabled="form.processing">Save</PrimaryButton>

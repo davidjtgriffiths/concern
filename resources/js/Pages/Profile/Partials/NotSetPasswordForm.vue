@@ -7,10 +7,8 @@ import { useForm } from '@inertiajs/vue3';
 import { ref } from 'vue';
 
 const passwordInput = ref(null);
-const currentPasswordInput = ref(null);
 
 const form = useForm({
-    current_password: '',
     password: '',
     password_confirmation: '',
 });
@@ -42,7 +40,7 @@ const updatePassword = () => {
         <form @submit.prevent="updatePassword" class="mt-6 space-y-6">
 
             <div>
-                <InputLabel for="password" value="New Password" />
+                <InputLabel for="password" value="Choose a Password" />
 
                 <TextInput
                     id="password"
@@ -79,6 +77,7 @@ const updatePassword = () => {
                     leave-active-class="transition ease-in-out"
                     leave-to-class="opacity-0"
                 >
+                    <!-- TODO: This isn't going to show so need a flash banner session thingey to say 'PASSWORD SAVED' -->
                     <p v-if="form.recentlySuccessful" class="text-sm text-gray-600">Saved.</p>
                 </Transition>
             </div>
