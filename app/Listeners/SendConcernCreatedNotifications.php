@@ -36,6 +36,7 @@ class SendConcernCreatedNotifications implements ShouldQueue
             [
                 'email' => $recipientEmail,
                 'email_verified_at' => Carbon::now(),
+                'password_set_by_user' => false,
             ]
         );
 
