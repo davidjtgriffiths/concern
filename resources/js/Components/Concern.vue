@@ -24,11 +24,11 @@ const editing = ref(false);
         <div class="flex-1">
             <div class="flex justify-between items-center">
                 <div>
-                    <span class="text-gray-800">{{ concern.user.name }}</span>
+                    <span class="text-gray-800">{{ concern.reporter.name }}</span>
                     <small class="ml-2 text-sm text-gray-600">{{ new Date(concern.created_at).toLocaleString() }}</small>
                     <small v-if="concern.created_at !== concern.updated_at" class="text-sm text-gray-600"> &middot; edited</small>
                 </div>
-                <Dropdown v-if="concern.user.id === $page.props.auth.user.id">
+                <Dropdown v-if="concern.reporter.id === $page.props.auth.user.id">
                     <template #trigger>
                         <button>
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" viewBox="0 0 20 20" fill="currentColor">

@@ -37,7 +37,7 @@ class ConcernPolicy
      */
     public function update(User $user, Concern $concern): bool
     {
-        return $concern->user()->is($user);
+        return $concern->reporter()->is($user);
     }
 
     /**

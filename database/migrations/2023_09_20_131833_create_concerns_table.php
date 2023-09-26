@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('concerns', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('owner_id')->nullable()->constrained('users');
+            $table->foreignId('reporter_id')->constrained('users');
             $table->string('subject');
             $table->string('message');
             $table->string('recipient_email');

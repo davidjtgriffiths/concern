@@ -40,6 +40,9 @@ class SendConcernCreatedNotifications implements ShouldQueue
             ]
         );
 
+        $event->concern->owner()->associate($user);
+        $event->concern->save();
+
         $generator = new LoginUrl($user);
         $generator->setRedirectUrl('/concerns'); //TODO: Change this to Cases
         $loginLink = $generator->generate();

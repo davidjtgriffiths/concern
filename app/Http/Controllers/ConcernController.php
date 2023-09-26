@@ -18,7 +18,7 @@ class ConcernController extends Controller
     {
         return Inertia::render('Concern/Index', [
 
-            'concerns' => Concern::where('user_id', Auth::id())->with('user:id,name')->latest()->get(),
+            'concerns' => Concern::where('reporter_id', Auth::id())->with('reporter:id,name')->latest()->get(),
 
         ]);
     }
@@ -46,7 +46,7 @@ class ConcernController extends Controller
             'recipient_email' => 'email:rfc,dns|ends_with:@'.$tld,
         ]);
 
-        $request->user()->concerns()->create($validated);
+        $request->user()->concernReported()->create($validated);
 
         return redirect(route('concerns.index'));
     }

@@ -21,8 +21,13 @@ class Concern extends Model
         'created' => ConcernCreated::class,
     ];
 
-    public function user(): BelongsTo
+    public function reporter(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'reporter_id');
+    }
+
+    public function owner(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'owner_id');
     }
 }

@@ -39,8 +39,8 @@ class NewConcern extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-                    ->subject("New Concern from {$this->concern->user->name}")
-                    ->greeting("New Concern from {$this->concern->user->name}")
+                    ->subject("New Concern from {$this->concern->reporter->name}")
+                    ->greeting("New Concern from {$this->concern->reporter->name}")
                     ->line(Str::limit($this->concern->message, 50))
                     ->action('Go to Website', url($this->loginLink))
                     ->line('Thank you for using our application!');
