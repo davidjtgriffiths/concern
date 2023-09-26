@@ -24,6 +24,18 @@ class ConcernController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     */
+    public function issues(): Response
+    {
+        return Inertia::render('Concern/Issues', [
+
+            'concerns' => Concern::where('owner_id', Auth::id())->with('owner:id,name')->latest()->get(),
+
+        ]);
+    }
+
+    /**
      * Show the form for creating a new resource.
      */
     public function create()

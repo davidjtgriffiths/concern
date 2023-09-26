@@ -34,6 +34,8 @@ Route::resource('concerns', ConcernController::class)
     ->only(['index', 'store', 'update', 'destroy'])
     ->middleware(['auth', 'verified']);
 
+Route::get('/issues', 'App\Http\Controllers\ConcernController@issues')->name('concerns.issues');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
