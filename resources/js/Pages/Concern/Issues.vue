@@ -7,11 +7,6 @@ import Issue from '@/Components/Issue.vue';
 
 defineProps(['concerns']);
  
-const form = useForm({
-    subject: '',
-    message: '',
-    recipient_email: '',
-});
 </script>
  
 <template>
