@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('journal_entries', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('concern_id')->constrained('concerns');
+            $table->string('subject');
             $table->timestamps();
         });
     }

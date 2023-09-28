@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\JournalEntry;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreJournalEntryRequest;
 use App\Http\Requests\UpdateJournalEntryRequest;
-use App\Models\JournalEntry;
 
 class JournalEntryController extends Controller
 {
@@ -27,9 +28,15 @@ class JournalEntryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreJournalEntryRequest $request)
+    public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'message' => 'required|string|max:255',
+        ]);
+
+        $request->concern()->journalEntry()->create($validated);
+
+        return redirect(route('concerns.case'));
     }
 
     /**
