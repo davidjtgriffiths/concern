@@ -19,12 +19,12 @@ const editing = ref(false);
         <div class="flex-1">
             <div class="flex justify-between items-center">
                 <div>
-                    <span class="text-gray-800">{{ concern.reporter.name }}</span>
-                    <small class="ml-2 text-sm text-gray-600">{{ new Date(concern.created_at).toLocaleString() }}</small>
-                    <small v-if="concern.created_at !== concern.updated_at" class="text-sm text-gray-600"> &middot; edited</small>
+                    <span class="text-gray-800">{{ concern }}</span>
+                    <!-- <small class="ml-2 text-sm text-gray-600">{{ new Date(concern.created_at).toLocaleString() }}</small> -->
+                    <!-- <small v-if="concern.created_at !== concern.updated_at" class="text-sm text-gray-600"> &middot; edited</small> -->
                 </div>
             </div>
-            <p class="mt-4 text-lg text-gray-900">{{ concern.message }}</p>
+            <!-- <p class="mt-4 text-lg text-gray-900">{{ concern.message }}</p> -->
         </div>
     </div>
 </template>

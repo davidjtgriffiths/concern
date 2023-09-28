@@ -7,12 +7,12 @@ import Issue from '@/Components/Issue.vue';
 import JournalEntry from '@/Components/Issue.vue';
 
 defineProps(['concern']);
- 
+
 </script>
- 
+
 <template>
-    <Head title="Issues" />
- 
+    <Head title="Case" />
+
     <AuthenticatedLayout>
         <div class="max-w-2xl mx-auto p-4 sm:p-6 lg:p-8">
             <div class="mt-6 bg-white shadow-sm rounded-lg divide-y">
@@ -21,13 +21,13 @@ defineProps(['concern']);
                     :concern="concern"
                 />
             </div>
-            <div class="mt-6 bg-white shadow-sm rounded-lg divide-y">
+            <!-- <div class="mt-6 bg-white shadow-sm rounded-lg divide-y">
                 <JournalEntry
                     v-for="entry in concern.journalEntries"
                     :key="entry.id"
                     :entry="entry"
                 />
-            </div>
+            </div> -->
         </div>
     </AuthenticatedLayout>
 </template>

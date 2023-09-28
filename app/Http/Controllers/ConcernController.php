@@ -66,9 +66,13 @@ class ConcernController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Concern $concern)
+    public function case($id)
     {
-        //
+        return Inertia::render('Concern/Case', [
+
+            'concern' => Concern::where('id', $id)->latest()->get(),
+
+        ]);
     }
 
     /**

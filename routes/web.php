@@ -35,6 +35,7 @@ Route::resource('concerns', ConcernController::class)
     ->middleware(['auth', 'verified']);
 
 Route::get('/issues', 'App\Http\Controllers\ConcernController@issues')->name('concerns.issues');
+Route::get('/case/{id}', 'App\Http\Controllers\ConcernController@case')->name('concerns.case');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
