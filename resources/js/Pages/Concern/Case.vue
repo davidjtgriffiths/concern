@@ -4,7 +4,7 @@ import InputError from '@/Components/InputError.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import { useForm, Head } from '@inertiajs/vue3';
 import Issue from '@/Components/Issue.vue';
-import JournalEntry from '@/Components/Issue.vue';
+import JournalEntry from '@/Components/JournalEntry.vue';
 
 defineProps(['concern']);
 
@@ -39,6 +39,10 @@ const form = useForm({
                     :concern="concern"
                 />
             </div>
+            <!-- xx{{ concern[0].journal_entry }}xx -->
+            <div v-for="x in concern.journal_entry">
+xxx{{ x }}xxx
+            </div>
             <!-- <div class="mt-6 bg-white shadow-sm rounded-lg divide-y">
                 <JournalEntry
                     v-for="entry in concern.journalEntries"
@@ -47,7 +51,7 @@ const form = useForm({
                 />
             </div> -->
             <JournalEntry
-                    v-for="entry in concern.journalEntries"
+                    v-for="entry in concern.journal_entry"
                     :key="entry.id"
                     :entry="entry"
                 />

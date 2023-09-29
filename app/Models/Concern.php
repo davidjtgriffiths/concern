@@ -7,6 +7,7 @@ use App\Models\JournalEntry;
 use App\Events\ConcernCreated;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\hasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Concern extends Model

@@ -6,7 +6,7 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 import { useForm } from '@inertiajs/vue3';
 import { ref } from 'vue';
 
-const props = defineProps(['concern']);
+const props = defineProps(['entry']);
 const editing = ref(false);
 
 </script>
@@ -19,7 +19,7 @@ const editing = ref(false);
         <div class="flex-1">
             <div class="flex justify-between items-center">
                 <div>
-                    <span class="text-gray-800">{{ concern[0] }}</span>
+                    <span class="text-gray-800">{{ entry.subject }}</span>
                     <!-- <small class="ml-2 text-sm text-gray-600">{{ new Date(concern.created_at).toLocaleString() }}</small> -->
                     <!-- <small v-if="concern.created_at !== concern.updated_at" class="text-sm text-gray-600"> &middot; edited</small> -->
                 </div>
