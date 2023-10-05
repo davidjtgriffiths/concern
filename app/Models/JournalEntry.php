@@ -11,7 +11,7 @@ class JournalEntry extends Model
     use HasFactory;
 
     protected $fillable = [
-        'message',
+        'subject',
     ];
 
     public function owner(): BelongsTo

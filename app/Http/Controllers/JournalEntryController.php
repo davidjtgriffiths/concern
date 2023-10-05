@@ -34,11 +34,14 @@ class JournalEntryController extends Controller
         $validated = $request->validate([
             'subject' => 'required|string|max:255',
         ]);
-        // dd('dave');
+        // dd($validated);
 
         $concern = Concern::find($request->id);
-        $concern->journalEntry($validated)->create($validated);
-        return redirect(route('concerns.case'));
+        // $concern->journalEntry($validated)->create($validated);
+
+        $journalEntry = $concern->journalEntry()->create($validated);
+        
+        return redirect(route('concerns.case', $request->id));
     }
 
     /**
