@@ -6,10 +6,11 @@ import { useForm, Head } from '@inertiajs/vue3';
 import Issue from '@/Components/Issue.vue';
 import JournalEntry from '@/Components/JournalEntry.vue';
 
-defineProps(['concern']);
+const props = defineProps(['concern']);
 
 const form = useForm({
-    message: '',
+    subject: '',
+    id: props.concern.id,
 });
 
 </script>
@@ -23,11 +24,11 @@ const form = useForm({
             <form @submit.prevent="form.post(route('journal-entry.store'), { onSuccess: () => form.reset() })">
 
                 <textarea
-                    v-model="form.message"
+                    v-model="form.subject"
                     placeholder="What's on your mind?"
                     class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
                 ></textarea>
-                <InputError :message="form.errors.message" class="mt-2" />
+                <InputError :message="form.errors.subject" class="mt-2" />
 
                 <PrimaryButton class="mt-4">Concern</PrimaryButton>
 

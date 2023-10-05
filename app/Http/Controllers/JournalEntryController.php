@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\JournalEntry;
+use App\Models\Concern;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreJournalEntryRequest;
 use App\Http\Requests\UpdateJournalEntryRequest;
@@ -31,11 +32,12 @@ class JournalEntryController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'message' => 'required|string|max:255',
+            'subject' => 'required|string|max:255',
         ]);
+        // dd('dave');
 
-        $request->concern()->journalEntry()->create($validated);
-
+        $concern = Concern::find($request->id);
+        $concern->journalEntry($validated)->create($validated);
         return redirect(route('concerns.case'));
     }
 
