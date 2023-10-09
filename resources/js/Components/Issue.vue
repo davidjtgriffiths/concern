@@ -5,6 +5,7 @@ import InputError from '@/Components/InputError.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import { useForm } from '@inertiajs/vue3';
 import { ref } from 'vue';
+import { Link } from '@inertiajs/vue3';
 
 const props = defineProps(['concern']);
 const editing = ref(false);
@@ -18,11 +19,13 @@ const editing = ref(false);
         </svg>
         <div class="flex-1">
             <div class="flex justify-between items-center">
+                <Link :href="'/case/' + concern.id">
                 <div>
-                    <span class="text-gray-800">{{ concern[0] }}</span>
+                    <span class="text-gray-800">{{ concern }}</span>
                     <!-- <small class="ml-2 text-sm text-gray-600">{{ new Date(concern.created_at).toLocaleString() }}</small> -->
                     <!-- <small v-if="concern.created_at !== concern.updated_at" class="text-sm text-gray-600"> &middot; edited</small> -->
                 </div>
+            </Link >
             </div>
             <!-- <p class="mt-4 text-lg text-gray-900">{{ concern.message }}</p> -->
         </div>
