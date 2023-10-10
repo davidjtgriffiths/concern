@@ -11,10 +11,10 @@ class JournalEntry extends Model
     use HasFactory;
 
     protected $fillable = [
-        'subject',
+        'subject', 'isPublic', 'isCommentable',
     ];
 
-    public function owner(): BelongsTo
+    public function owner(): BelongsTo //TODO: This should probably be concern, owner needs to be a user.
     {
         return $this->belongsTo(Concern::class);
     }
