@@ -18,6 +18,8 @@ class Concern extends Model
         'subject',
         'message',
         'recipient_email',
+        'private_status_id',
+        'public_status_id',
     ];
 
     protected $dispatchesEvents = [
@@ -38,4 +40,15 @@ class Concern extends Model
     {
         return $this->hasMany(JournalEntry::class);
     }
+
+    public function privateStatus(): BelongsTo
+    {
+        return $this->belongsTo(Status::class, 'private_status_id');
+    }
+
+    public function publicStatus(): BelongsTo
+    {
+        return $this->belongsTo(Status::class, 'public_status_id');
+    }
+
 }

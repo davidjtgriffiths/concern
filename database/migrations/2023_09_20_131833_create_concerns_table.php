@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('owner_id')->nullable()->constrained('users');
             $table->foreignId('reporter_id')->constrained('users');
+            $table->foreignId('private_status_id')->nullable()->constrained('status');
+            $table->foreignId('public_status_id')->nullable()->constrained('status');
             $table->string('subject');
             $table->string('message');
             $table->string('recipient_email');

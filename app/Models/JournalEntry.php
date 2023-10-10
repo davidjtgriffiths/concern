@@ -18,4 +18,14 @@ class JournalEntry extends Model
     {
         return $this->belongsTo(Concern::class);
     }
+
+    public function publicStatus(): BelongsTo
+    {
+        return $this->belongsTo(Status::class, 'public_status_id');
+    }
+
+    public function privateStatus(): BelongsTo
+    {
+        return $this->belongsTo(Status::class, 'private_status_id');
+    }
 }
