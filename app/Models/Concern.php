@@ -50,5 +50,4 @@ class Concern extends Model
     {
         return $this->belongsTo(Status::class, 'public_status_id');
     }
-
 }

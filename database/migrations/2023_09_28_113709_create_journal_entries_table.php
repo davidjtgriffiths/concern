@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('concern_id')->constrained('concerns');
             $table->string('subject');
+            $table->string('comment');
             $table->boolean('isPublic')->default(false);
             $table->boolean('isCommentable')->default(false);
             $table->timestamps();
