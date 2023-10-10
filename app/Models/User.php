@@ -36,7 +36,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'remember_token',
     ];
 
-    /**
+    /** 
      * The attributes that should be cast.
      *
      * @var array<string, string>
@@ -52,6 +52,16 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     public function concernOwned(): HasMany
+    {
+        return $this->hasMany(Concern::class, 'owner_id');
+    }
+
+    public function tagOwned(): HasMany
+    {
+        return $this->hasMany(Concern::class, 'owner_id');
+    }
+
+    public function statusOwned(): HasMany
     {
         return $this->hasMany(Concern::class, 'owner_id');
     }
