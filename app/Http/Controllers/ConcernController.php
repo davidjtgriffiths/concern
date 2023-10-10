@@ -70,7 +70,7 @@ class ConcernController extends Controller
     {
         return Inertia::render('Concern/Case', [
 
-            'concern' => Concern::with('journalEntry')->find($id),
+            'concern' => Concern::with('journalEntry', 'publicStatus')->find($id),
 
         ]);
     }
