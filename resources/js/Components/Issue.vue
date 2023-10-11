@@ -27,6 +27,7 @@ const editing = ref(false);
             
         </div>
             <p class="mt-4 text-lg text-gray-900">{{ concern.message }}</p>
+            <p class="mt-4 text-lg text-gray-900">{{ concern.public_status.name }}</p>
         </div>
     </Link >
 </template>
