@@ -9,6 +9,22 @@ import { Link } from '@inertiajs/vue3';
 
 const props = defineProps(['concern']);
 const editing = ref(false);
+const status = ref();
+const datas = 
+[
+    {    
+        name:'option1',
+        id:1   
+    },
+    {    
+        name:'option2',
+        id:2
+    },
+    {    
+        name:'option3',
+        id:3
+    },
+]
 
 </script>
 
@@ -28,6 +44,15 @@ const editing = ref(false);
         </div>
             <p class="mt-4 text-lg text-gray-900">{{ concern.message }}</p>
             <p class="mt-4 text-lg text-gray-900">{{ concern.public_status.name }}</p>
+            <p class="mt-4 text-lg text-gray-900">{{ status }}</p>
+        </div>
+
+        <div class="form-group">
+            <label>Select State:</label>
+            <select class='form-control' v-model='status'>
+                <option value='0' >Select State</option>
+                <option v-for='data in datas' :value='data.id'>{{ data.name }}</option>
+            </select>
         </div>
     </Link >
 </template>

@@ -30,7 +30,7 @@ class ConcernController extends Controller
     {
         return Inertia::render('Concern/Issues', [
 
-            'concerns' => Concern::where('owner_id', Auth::id())->with('reporter:id,name')->latest()->get(),
+            'concerns' => Concern::where('owner_id', Auth::id())->with('reporter:id,name', 'publicStatus')->latest()->get(),
 
         ]);
     }
